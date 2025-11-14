@@ -258,7 +258,9 @@ door_open=False
 level = 1
 collected = 0
 
-while True:
+running=True
+
+while running:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
@@ -280,7 +282,10 @@ while True:
             elif event.key == pygame.K_DOWN:
                 down = False
         elif event.type==pygame.QUIT:
-            pygame.quit()
+            running = False
+
+    if not running:
+        break
 
     #move the player
     if left:
@@ -440,3 +445,5 @@ while True:
     pygame.display.flip()
 
     clock.tick(60)
+
+pygame.quit()
