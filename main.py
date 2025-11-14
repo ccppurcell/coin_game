@@ -339,7 +339,7 @@ while True:
     update_header(collected,level)
         
 
-    if player.overlaps(the_coin):
+    if player.overlaps(the_coin) and not door_open:
         #relocate the coin, avoiding the player
         the_coin.loc(player.quadrant)
 
@@ -351,16 +351,18 @@ while True:
     
     if collected >= target:
 
-        #relocate the door
-        the_door.loc(player.quadrant)
+        if not door_open:
 
-        #open the door
-        door_open = True
+            the_door.loc(player.quadrant)
+
+            door_open = True
+
 
         #show the door
         the_door.update()
 
         if player.overlaps(the_door):
+
             #increase the level
             level+=1
 
