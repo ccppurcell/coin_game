@@ -7,7 +7,7 @@ python.
 
 You are a robot. Avoid the ghosts and collect enough coins to reveal
 the exit. Head through the exit to the next level, with more ghosts
-and more coins. Can you get to level 6?
+and more coins. Can you get to level 10?
 
 ![Screenshot](images/screenshot.png)
 
