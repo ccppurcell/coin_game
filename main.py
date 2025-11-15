@@ -109,12 +109,12 @@ class Robot(Object):
         #player always starts in the centre
         self.x = (width - rob_w)//2
         self.y = (height - rob_h)//2
+        self.quadrant = self.get_quadrant()
 
         self.image = images["robot"]
         self.width = rob_w
         self.height = rob_h
         self.vel = 5
-        self.quadrant = 5
 
     def move_up(self):
         #keep the player in the field
