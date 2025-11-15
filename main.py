@@ -10,6 +10,7 @@ class Object:
         #location
         self.x = 0
         self.y = 0
+        self.quadrant = self.get_quadrant()
 
         #dimensions
         self.height = 0
@@ -61,6 +62,9 @@ class Object:
         if quadrant in [7,8,9]:
             self.y = monster_h + (2+y_init)*((field_h-self.height)/3)
 
+        #update quadrant
+        self.quadrant = self.get_quadrant()
+
     def overlaps(self, other:"Object"):
         #detect collisions
 
@@ -75,6 +79,28 @@ class Object:
 
         return right_enough and left_enough and low_enough and high_enough
 
+    def get_quadrant(self):
+        #gets the current quadrant:
+        # 1 2 3
+        # 4 5 6
+        # 7 8 9
+
+        #narrow down quadrant by x coord
+        if self.x<border_w+field_w/3:
+            poss = [1,4,7]
+        elif self.x<border_w + 2 * field_w/3:
+            poss = [2,5,8]
+        else:
+            poss = [3,6,9]
+
+        #select quadrant by y coord
+        if self.y < border_h+field_h/3:
+            return poss[0]
+        elif self.y < border_h + 2*field_h/3:
+            return poss[1]
+        else:
+            return poss[2]
+    
 class Robot(Object):
     '''The player object'''
 
@@ -107,28 +133,6 @@ class Robot(Object):
         self.x+=self.vel if self.x+self.width < width-monster_w else 0
         self.quadrant = self.get_quadrant()
 
-    def get_quadrant(self):
-        #gets the current quadrant:
-        # 1 2 3
-        # 4 5 6
-        # 7 8 9
-
-        #narrow down quadrant by x coord
-        if self.x<border_w+field_w/3:
-            poss = [1,4,7]
-        elif self.x<border_w + 2 * field_w/3:
-            poss = [2,5,8]
-        else:
-            poss = [3,6,9]
-
-        #select quadrant by y coord
-        if self.y < border_h+field_h/3:
-            return poss[0]
-        elif self.y < border_h + 2*field_h/3:
-            return poss[1]
-        else:
-            return poss[2]
-    
 class Monster(Object):
     '''Enemies that move across the screen'''
 
@@ -150,6 +154,7 @@ class Coin(Object):
 
         #player starts in quadrant 5
         self.loc(5)
+        self.quadrant = self.get_quadrant()
 
 class Door(Object):
     '''Reaching the door increases the level'''
