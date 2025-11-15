@@ -37,3 +37,15 @@ def test_player_cannot_move_out_of_bounds():
     assert player.x == target2_x
     assert player.y == target2_y
 
+def test_coin_never_spawns_near_player():
+
+    #init objects
+    player = Robot()
+    coin = Coin()
+
+    for i in range(1,10):
+        player.quadrant = i
+        coin.loc(player.quadrant)
+        assert coin.quadrant != player.quadrant
+
+
