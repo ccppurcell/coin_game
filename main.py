@@ -40,30 +40,27 @@ class Object:
         #pick quadrant
         quadrant = avoid
         options = [i for i in range(1,9) if i!=avoid]
-        quadrant = random.choice(options)
+        self.quadrant = random.choice(options)
 
         #pick coords inside quadrant
         x_init = random.random()
         y_init = random.random()
 
         #assign x coord
-        if quadrant in [1,4,7]:
+        if self.quadrant in [1,4,7]:
             self.x = border_w + x_init*((field_w-self.width)/3)
-        if quadrant in [2,5,8]:
+        if self.quadrant in [2,5,8]:
             self.x = border_w + (1+x_init)*((field_w-self.width)/3) 
-        if quadrant in [3,6,9]:
+        if self.quadrant in [3,6,9]:
             self.x = border_w + (2+x_init)*((field_w-self.width)/3)
 
         #assign y coord
-        if quadrant in [1,2,3]:
+        if self.quadrant in [1,2,3]:
             self.y = border_h + y_init*((field_h-self.height)/3)
-        if quadrant in [4,5,6]:
+        if self.quadrant in [4,5,6]:
             self.y = border_h + (1+y_init)*((field_h-self.height)/3)
-        if quadrant in [7,8,9]:
+        if self.quadrant in [7,8,9]:
             self.y = border_h + (2+y_init)*((field_h-self.height)/3)
-
-        #update quadrant
-        self.quadrant = self.get_quadrant()
 
     def overlaps(self, other:"Object"):
         #detect collisions
