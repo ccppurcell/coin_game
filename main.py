@@ -72,10 +72,10 @@ class Object:
         margin = 10
 
         #collision conditions
-        right_enough = self.x+self.width > other.x + margin
-        left_enough = self.x < other.x + other.width - margin
-        low_enough = self.y+self.height > other.y + margin
-        high_enough = self.y < other.y + other.height - margin
+        right_enough = self.x+self.width >= other.x + margin
+        left_enough = self.x <= other.x + other.width - margin
+        low_enough = self.y+self.height >= other.y + margin
+        high_enough = self.y <= other.y + other.height - margin
 
         return right_enough and left_enough and low_enough and high_enough
 
