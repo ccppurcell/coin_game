@@ -67,3 +67,65 @@ def test_quadrant_bigger_than_player():
 
     assert field_w//3 > player.width
     assert field_h//3 > player.height
+
+def test_collision_is_symmetric():
+
+    # initialize objects
+    player = Robot()
+    obj = Object()
+    obj.width = obj.height = 100
+
+    margin = 10
+
+    #test non-overlapping horizontally
+    obj.x = player.x + player.width
+    obj.y = player.y
+    assert obj.overlaps(player) == player.overlaps(obj)
+
+    #test non-overlapping vertically
+    obj.x = player.x
+    obj.y = player.y + player.height
+    assert obj.overlaps(player) == player.overlaps(obj)
+
+    #test overlapping horizontally
+    obj.x = player.x + player.width - margin
+    obj.y = player.y
+    assert obj.overlaps(player) == player.overlaps(obj)
+
+    #test overlapping vertically
+    obj.x = player.x
+    obj.y = player.y + player.height - margin
+    assert obj.overlaps(player) == player.overlaps(obj)
+
+
+def test_collisions_work_as_expected():
+
+    #init objects
+    player = Robot()
+    obj = Object()
+    obj.height = obj.width = 100
+    
+    margin = 10
+
+    #test non-overlapping horizontally
+    obj.x = player.x+player.width
+    obj.y = player.y
+    assert obj.overlaps(player) is False
+
+    #test non-overlapping vertically
+    obj.x = player.x
+    obj.y = player.y+player.height
+    assert obj.overlaps(player) is False
+
+    #test overlapping horizontally
+    obj.x = player.x+player.width-margin
+    obj.y = player.y
+    assert obj.overlaps(player) is True
+
+    #test overlapping vertically
+    obj.x = player.x
+    obj.y = player.y+player.height-margin
+    assert obj.overlaps(player) is True
+
+    
+    
