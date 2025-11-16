@@ -39,8 +39,8 @@ class Object:
 
         #pick quadrant
         quadrant = avoid
-        while quadrant == avoid:
-            quadrant = random.randint(1,8)
+        options = [i for i in range(1,9) if i!=avoid]
+        quadrant = random.choice(options)
 
         #pick coords inside quadrant
         x_init = random.random()
