@@ -83,17 +83,17 @@ class Object:
         # 7 8 9
 
         #narrow down quadrant by x coord
-        if self.x<border_w+field_w/3:
+        if self.x<=border_w+field_w/3:
             poss = [1,4,7]
-        elif self.x<border_w + 2 * field_w/3:
+        elif self.x<=border_w + 2 * field_w/3:
             poss = [2,5,8]
         else:
             poss = [3,6,9]
 
         #select quadrant by y coord
-        if self.y < border_h+field_h/3:
+        if self.y <= border_h+field_h/3:
             return poss[0]
-        elif self.y < border_h + 2*field_h/3:
+        elif self.y <= border_h + 2*field_h/3:
             return poss[1]
         else:
             return poss[2]
