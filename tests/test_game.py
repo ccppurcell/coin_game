@@ -1,7 +1,8 @@
 import pygame
 
 from coin_game.main import (
-        Object, Robot, Monster, Coin, border_w, border_h, height, width)
+        Object, Robot, Monster, Coin, border_w, border_h, height,
+        width, field_w, field_h)
 
 def test_player_cannot_move_out_of_bounds():
 
