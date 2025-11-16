@@ -49,4 +49,10 @@ def test_coin_never_spawns_near_player():
         coin.loc(player.quadrant)
         assert coin.quadrant != player.quadrant
 
+def test_quadrant_bigger_than_player():
 
+    #init objects
+    player = Robot()
+
+    assert field_w//3 > player.width
+    assert field_h//3 > player.height
