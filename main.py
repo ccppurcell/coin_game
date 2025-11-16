@@ -48,19 +48,19 @@ class Object:
 
         #assign x coord
         if quadrant in [1,4,7]:
-            self.x = monster_w + x_init*((field_w-self.width)/3)
+            self.x = border_w + x_init*((field_w-self.width)/3)
         if quadrant in [2,5,8]:
-            self.x = monster_w + (1+x_init)*((field_w-self.width)/3) 
+            self.x = border_w + (1+x_init)*((field_w-self.width)/3) 
         if quadrant in [3,6,9]:
-            self.x = monster_w + (2+x_init)*((field_w-self.width)/3)
+            self.x = border_w + (2+x_init)*((field_w-self.width)/3)
 
         #assign y coord
         if quadrant in [1,2,3]:
-            self.y = monster_h + y_init*((field_h-self.height)/3)
+            self.y = border_h + y_init*((field_h-self.height)/3)
         if quadrant in [4,5,6]:
-            self.y = monster_h + (1+y_init)*((field_h-self.height)/3)
+            self.y = border_h + (1+y_init)*((field_h-self.height)/3)
         if quadrant in [7,8,9]:
-            self.y = monster_h + (2+y_init)*((field_h-self.height)/3)
+            self.y = border_h + (2+y_init)*((field_h-self.height)/3)
 
         #update quadrant
         self.quadrant = self.get_quadrant()
