@@ -49,6 +49,17 @@ def test_coin_never_spawns_near_player():
         coin.loc(player.quadrant)
         assert coin.quadrant != player.quadrant
 
+def test_door_never_spawns_near_player():
+
+    #init objects
+    player = Robot()
+    door = Door()
+
+    for i in range(1,10):
+        player.quadrant = i
+        door.loc(player.quadrant)
+        assert door.quadrant != player.quadrant
+
 def test_quadrant_bigger_than_player():
 
     #init objects
