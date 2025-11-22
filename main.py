@@ -200,6 +200,12 @@ pygame.display.set_caption("Collect coins, avoid monsters, open the door!")
 #initialise pygame
 pygame.init()
 
+#initialise sound effects
+pygame.mixer.init()
+coin_snd = pygame.mixer.Sound("sounds/ting.wav")
+door_snd = pygame.mixer.Sound("sounds/dingdong.wav")
+caught_snd = pygame.mixer.Sound("sounds/raspberry.wav")
+
 #other utilities
 clock=pygame.time.Clock()
 game_font = pygame.font.SysFont("Arial", 24)
@@ -357,6 +363,8 @@ if __name__ == "__main__":
             #collect a coin
             collected+=1
 
+            coin_snd.play()
+
         #set the target number of coins
         target = level+2
         
@@ -380,6 +388,8 @@ if __name__ == "__main__":
                 #reset
                 collected=0
                 door_open = False
+
+                door_snd.play()
 
         if not door_open:
             #show the coin
@@ -419,6 +429,9 @@ if __name__ == "__main__":
                     caught = True
                 mon.move_right()
                 mon.update()
+
+        if caught:
+            caught_snd.play()
         
         while caught:
             #display text indicating caught, what to do to play again

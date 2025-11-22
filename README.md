@@ -31,6 +31,10 @@ Only pygame.
 The images were made by the programming-25.mooc.fi team (I edited them
 slightly) and are publicly available from there.
 
+The sound effects come from [BBC Sound
+Effects](https://sound-effects.bbcrewind.co.uk/). This is a personal
+project and hence permitted under the BBC's [Content Licence for
+RemArc](https://sound-effects.bbcrewind.co.uk/licensing). 
 
 
 
