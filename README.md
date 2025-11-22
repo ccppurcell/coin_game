@@ -28,7 +28,7 @@ Only pygame.
 
 ## Thanks
 
-The images were made by the programming-25.mooc.fi team (I edited them
+The images were made by the <programming-25.mooc.fi> team (I edited them
 slightly) and are publicly available from there.
 
 The sound effects come from [BBC Sound
